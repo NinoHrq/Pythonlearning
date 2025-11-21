@@ -23,7 +23,7 @@ def print_complet_recipe(cookbook, name):
     recipe = cookbook[name]
     print(f"Recipe for {name}:")
     print(f"Ingredients list: {recipe['ingredients']}.")
-    print(f"To be eaten for lunch {recipe['meal']}.")
+    print(f"To be eaten for {recipe['meal']}.")
     print(f"Takes {recipe['prep_time']} minutes of cooking.")
 
 def delete_recipe(cookbook, name):
@@ -56,7 +56,7 @@ def add_recipe(cookbook):
 
 
 if __name__=="__main__":
-    while(1):
+    while True :
         print("Welcome to the Python Cookbook!")
         print("List of available options:")
         print("    1: Add a recipe")
@@ -64,5 +64,22 @@ if __name__=="__main__":
         print("    3: Print a recipe")
         print("    4: Print the cookbook")
         print("    5: Quit\n\n")
-        print("Please select an option:")
+        choice = input("Please select an option:").strip()
+        if choice == "1":
+            add_recipe(cookbook)
+        elif choice == "2":
+            name = input("Please enter a recipe name to delete:\n").strip()
+            delete_recipe(cookbook, name)
+        elif choice == "3":
+            name = input("Please enter a recipe name to get its details:\n").strip()
+            print_complet_recipe(cookbook, name)
+        elif choice == "4":
+            print_recipe(cookbook)
+        elif choice == "5":
+            print("Cookbook closed. Goodbye !")
+            break
+        else:
+            print("Sorry, this option does not exist.")
+
+
 
